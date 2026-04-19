@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-[#F5F5F5] font-sans antialiased selection:bg-[#8B0000]/30 selection:text-white;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-black/50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-[#8B0000]/40 transition-colors;
+  }
+}
+
+@layer components {
+  .studio-bg {
+    @apply min-h-screen bg-black;
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(139, 0, 0, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(197, 160, 89, 0.12) 0%, transparent 40%),
+      url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); /* Subtle texture */
+    background-attachment: fixed;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-3xl bg-zinc-900/80 border border-white/10 shadow-2xl;
+  }
+
+  .gold-border {
+    @apply border-[#C5A059]/20 hover:border-[#C5A059]/60 transition-all duration-500;
+  }
+
+  .rust-border {
+    @apply border-[#8B0000]/20 hover:border-[#8B0000]/60 transition-all duration-500;
+  }
+
+  .gold-glow {
+    box-shadow: 0 10px 30px -15px rgba(255, 191, 0, 0.2);
+  }
+
+  .rust-glow {
+    box-shadow: 0 10px 30px -15px rgba(227, 10, 10, 0.2);
+  }
+
+  .nav-item-active {
+    @apply bg-[#C5A059] text-black shadow-[0_0_25px_rgba(197,160,89,0.5)] border-[#C5A059]/40;
+  }
+
+  .nav-item-active-red {
+    @apply bg-[#8B0000] text-white shadow-[0_0_25px_rgba(139,0,0,0.5)] border-[#8B0000]/40;
+  }
+
+  .text-gold { @apply text-[#C5A059]; }
+  .text-rust { @apply text-[#8B0000]; }
+
+  .custom-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full;
+  }
+  
+  .tab-inactive {
+     @apply border-transparent text-white/30 hover:text-white/60 hover:bg-white/5;
+  }
+  
+  .tab-active {
+     @apply border-[#C5A059] text-[#C5A059] bg-[#C5A059]/5;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
